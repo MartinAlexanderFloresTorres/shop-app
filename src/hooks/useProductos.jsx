@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import productosjson from '../data/productos.json'
 
 const useProductos = () => {
   const [productos, setProductos] = useState([])
@@ -8,9 +8,7 @@ const useProductos = () => {
   const getProductos = async () => {
     setLoading(true)
     try {
-      const { data } = await axios.get('/src/data/productos.json')
-      console.log(data.productos)
-      setProductos(data.productos)
+      setProductos(productosjson.productos)
     } catch (error) {
       console.log(error)
     }
