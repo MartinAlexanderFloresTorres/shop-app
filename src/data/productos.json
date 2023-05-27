@@ -1,0 +1,54 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Engrapador mini e-10 10h negro fab 401099",
+      "descripcion": "Producto de calidad y a mejores precios solo para tu bolsillo",
+      "precio": 100.0,
+      "stocks": 2,
+      "imagen": "/producto_1.jpg",
+      "categoria": "engrapadores",
+      "caracteristicas": ["Buen precio", "Contra el agua", "calidad 100%"]
+    },
+    {
+      "id": 2,
+      "nombre": "Engrapador mini e-10 10h negro fab 401099",
+      "descripcion": "Producto de calidad y a mejores precios solo para tu bolsillo",
+      "precio": 100.0,
+      "stocks": 0,
+      "imagen": "/producto_1.jpg",
+      "categoria": "engrapadores",
+      "caracteristicas": ["Buen precio", "Contra el agua", "calidad 100%"]
+    },
+    {
+      "id": 3,
+      "nombre": "Engrapador mini e-10 10h negro fab 401099",
+      "descripcion": "Producto de calidad y a mejores precios solo para tu bolsillo",
+      "precio": 100.0,
+      "stocks": 2,
+      "imagen": "/producto_1.jpg",
+      "categoria": "engrapadores",
+      "caracteristicas": ["Buen precio", "Contra el agua", "calidad 100%"]
+    },
+    {
+      "id": 4,
+      "nombre": "Engrapador mini e-10 10h negro fab 401099",
+      "descripcion": "Producto de calidad y a mejores precios solo para tu bolsillo",
+      "precio": 100.0,
+      "stocks": 2,
+      "imagen": "/producto_1.jpg",
+      "categoria": "engrapadores",
+      "caracteristicas": ["Buen precio", "Contra el agua", "calidad 100%"]
+    },
+    {
+      "id": 5,
+      "nombre": "Engrapador mini e-10 10h negro fab 401099",
+      "descripcion": "Producto de calidad y a mejores precios solo para tu bolsillo",
+      "precio": 100.0,
+      "stocks": 2,
+      "imagen": "/producto_1.jpg",
+      "categoria": "engrapadores",
+      "caracteristicas": ["Buen precio", "Contra el agua", "calidad 100%"]
+    }
+  ]
+}
