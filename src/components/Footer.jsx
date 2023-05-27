@@ -36,7 +36,7 @@ const Footer = () => {
             <li>
               <p className='footer__flex'>
                 <strong>Teléfono:</strong>
-                <a href='tel:123456789'>123456789</a>
+                <a href='tel:999748514'>999748514</a>
               </p>
             </li>
             <li>
@@ -47,7 +47,12 @@ const Footer = () => {
             </li>
             <li>
               <p>
-                <strong>Dirección:</strong> Calle Falsa 123
+                <strong>Dirección:</strong> Av. Cesar Vallejo 897 Independencia- Lima
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Dirección:</strong> Jr. Ucayali N°779 -B Int. Sótano 110 - Lima
               </p>
             </li>
           </ul>

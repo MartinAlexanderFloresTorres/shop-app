@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Buscador from './Buscador'
 import Logo from './Logo'
-import { BsTelephoneFill } from 'react-icons/bs'
-import { HiOutlineMail } from 'react-icons/hi'
 import { FiMenu, FiSearch, FiX } from 'react-icons/fi'
 
 const Header = () => {
@@ -30,20 +28,6 @@ const Header = () => {
       <header className='header'>
         <div className='header__desktop'>
           <div className='container'>
-            <div className='header__top'>
-              <p className='header__top-left'>Bienvenido a Panita | Tienda Online</p>
-              <div className='header__top-right'>
-                <div>
-                  <BsTelephoneFill />
-                  <a href='tel:+51902680223'>902680223</a>
-                </div>
-                <div>
-                  <HiOutlineMail />
-                  <a href='mailto:ventas@panita.pe'>ventas@panita.pe</a>
-                </div>
-              </div>
-            </div>
-
             <div className='header__center'>
               <Logo />
               <Buscador />

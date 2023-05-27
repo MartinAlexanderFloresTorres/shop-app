@@ -49,6 +49,7 @@ html {
 body {
   background-color: #f5f5f5;
   font-family: 'Roboto', sans-serif;
+  min-width: 360px;
 }
 a {
   color: currentColor;
@@ -60,9 +61,6 @@ button {
   outline: none;
   background: transparent;
   color: currentColor;
-}
-ul {
-  list-style: none;
 }
 img {
   display: block;
@@ -99,27 +97,46 @@ select::placeholder {
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   transition: 0.3s ease all;
   border: 1px solid transparent;
 }
-.bnt--1 {
+.btn--1 {
   background: var(--primary);
   color: var(--white);
 }
-.bnt--1:hover {
+.btn--1:hover {
   background: var(--white);
   border: 1px solid var(--primary);
   color: var(--primary);
 }
-.bnt--2 {
+.btn--2 {
+  border: 1px solid var(--white);
+  color: var(--white);
+}
+.btn--2:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+.btn--3 {
   background: var(--white);
   border: 1px solid var(--primary);
   color: var(--primary);
 }
-.bnt--2:hover {
+.btn--3:hover {
   background: var(--primary);
   color: var(--white);
+}
+.btn--whatsApp {
+  background: #2db742;
+  color: var(--white);
+}
+.btn--whatsApp:hover {
+  background: #26a939;
+  color: var(--white);
+}
+.padding {
+  padding: 20px;
 }
 
 /*=============== header ===============*/
@@ -129,13 +146,6 @@ select::placeholder {
 }
 .header .container {
   padding: 20px;
-}
-.header__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  column-gap: 20px;
-  margin-bottom: 20px;
 }
 .header__center {
   display: flex;
@@ -262,7 +272,7 @@ select::placeholder {
   width: 100%;
   padding: 20px 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   column-gap: 10px;
   row-gap: 10px;
 }
@@ -279,8 +289,8 @@ select::placeholder {
 }
 .producto img {
   width: 100%;
-  min-width: 100px;
-  min-height: 100px;
+  min-width: 180px;
+  min-height: 180px;
   object-fit: contain;
 }
 .producto__titulo {
@@ -293,12 +303,296 @@ select::placeholder {
   overflow: hidden;
   margin-bottom: 10px;
 }
-.producto__precio {
-  display: block;
+/*=============== productoDetalle ===============*/
+.productoDetalle {
+  padding: 20px;
+}
+.productoDetalle__indicador {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  row-gap: 10px;
+  margin-bottom: 20px;
+}
+.productoDetalle__indicador a {
+  width: fit-content;
+  min-width: min-content;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.productoDetalle__indicador a:last-child {
+  color: var(--dark);
+  font-weight: 500;
+}
+.productoDetalle__contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+  margin-bottom: 20px;
+}
+.productoDetalle__imagen {
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  object-fit: contain;
+  margin-right: 20px;
+  margin: 0 auto;
+}
+.productoDetalle__imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.productoDetalle__detalle {
+  flex: 1;
+}
+.productoDetalle__info {
+  margin-bottom: 20px;
+}
+.productoDetalle__info h2 {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+.productoDetalle__descripcion {
+  color: var(--gray-16);
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.productoDetalle__whatsApp {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin-bottom: 20px;
+  background: #2db742;
+  color: var(--white);
+  border-radius: 50px;
+  overflow: hidden;
+  transition: 0.3s ease all;
+  box-shadow: 0 0 5px #2db74277;
+}
+.productoDetalle__whatsApp:hover {
+  background: #26a939;
+  color: var(--white);
+  transform: translateY(-4px);
+}
+
+.productoDetalle__whatsApp-left {
+  position: relative;
+}
+.productoDetalle__whatsApp-persona {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.productoDetalle__whatsApp-logo {
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  background: var(--white);
+  border-radius: 50%;
+}
+.productoDetalle__whatsApp-right {
+  padding: 10px 20px 10px 10px;
+}
+.productoDetalle__whatsApp-right div {
+  display: flex;
+  column-gap: 10px;
+  margin-bottom: 4px;
+}
+.productoDetalle__whatsApp-right div p {
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+.productoDetalle__whatsApp-right div span {
+  font-size: 9px;
+  line-height: 1.34em;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.98);
+  font-weight: 400;
+  background: #62c971;
+  padding: 3px 4px;
+}
+.productoDetalle__whatsApp-right p {
+  font-size: 16px;
+  font-weight: 500;
+}
+.detalleProducto__compartir {
+  margin-bottom: 20px;
+}
+.detalleProducto__compartir h2 {
   font-size: 18px;
   font-weight: 600;
-  color: var(--black);
+  color: var(--secondary);
   margin-bottom: 10px;
+}
+.detalleProducto__compartir--redes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  margin-bottom: 20px;
+}
+.detalleProducto__compartir--redes a {
+  padding: 12px 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 1.3rem;
+  font-weight: 600;
+  transition: 0.3s ease all;
+}
+.detalleProducto__compartir--redes a:nth-child(1) {
+  background: rgb(59, 89, 152);
+  color: var(--white);
+}
+.detalleProducto__compartir--redes a:nth-child(2) {
+  background: rgb(0, 172, 238);
+  color: var(--white);
+}
+.detalleProducto__compartir--redes a:nth-child(3) {
+  background: rgb(7, 94, 84);
+  color: var(--white);
+}
+.detalleProducto__compartir--redes a:nth-child(4) {
+  background: rgb(0, 114, 177);
+  color: var(--white);
+}
+.detalleProducto__compartir--redes a:hover {
+  transform: translateY(-4px);
+  opacity: 0.8;
+}
+.productoDetalle__caracteristicas {
+  font-size: 16px;
+  color: var(--gray-16);
+  margin-bottom: 20px;
+  background: var(--white);
+  border: 1px solid var(--gray-14);
+}
+.productoDetalle__caracteristicas-titulo {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary);
+  padding: 20px;
+  border-bottom: 1px solid var(--gray-14);
+}
+.productoDetalle__caracteristicas-contenido {
+  padding: 20px;
+  color: var(--secondary);
+}
+.productoDetalle__caracteristicas-contenido p {
+  margin-bottom: 10px;
+}
+.productoDetalle__caracteristicas-contenido h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.productoDetalle__caracteristicas-contenido ul {
+  padding-left: 20px;
+}
+.productoDetalle__caracteristicas-contenido ul li {
+  margin-bottom: 10px;
+}
+/*=============== banner ===============*/
+.banner {
+  width: 100%;
+  background-color: #00000030;
+  background-blend-mode: multiply;
+  background-image: url('/banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.banner .container {
+  width: 100%;
+  min-height: 500px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--white);
+  column-gap: 20px;
+}
+.banner__left {
+  width: 100%;
+  max-width: 500px;
+}
+.banner__right {
+  width: 50%;
+}
+.banner__titulo {
+  font-size: 64px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 20px;
+  text-shadow: rgb(0, 76, 38) 3px 3px 2px;
+  letter-spacing: -4px;
+  font-weight: 400;
+  border-color: rgb(51, 51, 51);
+}
+.banner__descripcion {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 20px;
+  text-shadow: rgba(40, 40, 40, 0.8) 3px 3px 2px;
+}
+.banner__botones {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+.banner__boton {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px 20px;
+}
+@media (max-width: 780px) {
+  .banner__titulo {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  .banner .container {
+    position: relative;
+    z-index: 1;
+    min-height: 300px;
+  }
+  .banner__right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    object-fit: contain;
+    z-index: -1;
+  }
+  .banner__descripcion {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .banner__titulo {
+    font-size: 40px;
+  }
 }
 /*=============== footer ===============*/
 .footer {
@@ -333,6 +627,7 @@ select::placeholder {
 }
 .footer__center ul {
   flex: auto;
+  list-style: none;
 }
 .footer__center ul li h3 {
   font-size: 18px;

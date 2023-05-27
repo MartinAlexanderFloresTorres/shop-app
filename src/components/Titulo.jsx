@@ -1,7 +1,7 @@
-const Titulo = ({ titulo }) => {
+const Titulo = ({ children }) => {
   return (
     <div className='titulo'>
-      <h2>{titulo}</h2>
+      <h2>{children}</h2>
     </div>
   )
 }
