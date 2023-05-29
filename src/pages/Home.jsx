@@ -1,5 +1,4 @@
 import Indicadores from '../components/Indicadores'
-import Container from '../components/Container'
 import Titulo from '../components/Titulo'
 import Productos from '../components/Productos'
 import useProductos from '../hooks/useProductos'
@@ -12,10 +11,10 @@ const Home = () => {
       <Banner />
 
       <Indicadores />
-      <Container padding={20}>
+      <div className='container padding'>
         <Titulo>Productos</Titulo>
         <Productos productos={productos} loading={loading} />
-      </Container>
+      </div>
     </>
   )
 }

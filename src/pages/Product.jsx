@@ -3,6 +3,7 @@ import { BiChevronRight } from 'react-icons/bi'
 import Productos from '../components/Productos'
 import Titulo from '../components/Titulo'
 import useProductos from '../hooks/useProductos'
+import EnlaceWhatsApp from '../components/EnlaceWhatsApp'
 
 const Product = () => {
   const { productos, loading } = useProductos()
@@ -40,32 +41,7 @@ const Product = () => {
                 aspernatur iure!
               </p>
 
-              <a
-                href='https://web.whatsapp.com/send?phone=999748514'
-                target='_blank'
-                className='productoDetalle__whatsApp'
-                rel='noreferrer'
-              >
-                <div className='productoDetalle__whatsApp-left'>
-                  <img
-                    className='productoDetalle__whatsApp-persona'
-                    src='/persona.jpg'
-                    alt='whatsApp'
-                  />
-                  <img
-                    className='productoDetalle__whatsApp-logo'
-                    src='/whatsApp.svg'
-                    alt='whatsApp'
-                  />
-                </div>
-                <div className='productoDetalle__whatsApp-right'>
-                  <div>
-                    <p>COTIZACIONES</p>
-                    <span>Online</span>
-                  </div>
-                  <p>¿Consultas? Chat via Whatsapp</p>
-                </div>
-              </a>
+              <EnlaceWhatsApp />
             </div>
 
             <div className='detalleProducto__compartir'>
@@ -108,7 +84,7 @@ const Product = () => {
         </div>
 
         <Titulo>Productos relacionados</Titulo>
-        <Productos productos={productos} />
+        <Productos productos={productos} loading={loading} />
       </div>
     </div>
   )

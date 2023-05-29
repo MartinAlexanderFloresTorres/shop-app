@@ -234,6 +234,10 @@ select::placeholder {
   row-gap: 10px;
   border-radius: 5px;
   border: 1px solid var(--gray-4);
+  transition: 0.3s ease all;
+}
+.indicador:hover {
+  border-color: var(--primary);
 }
 /*=============== titulo ===============*/
 .titulo {
@@ -251,10 +255,147 @@ select::placeholder {
   background: var(--primary);
 }
 .titulo h2 {
-  font-size: 18px;
-  font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 24px;
+  font-weight: 800;
   color: var(--dark);
+  text-transform: uppercase;
   padding: 10px 0;
+  text-shadow: rgb(213, 213, 213) 3px 3px 2px;
+}
+/*=============== whatsApp ===============*/
+.whatsApp__btn {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  background: #2db742;
+  color: var(--white);
+  border-radius: 50px;
+  transition: 0.3s ease all;
+  box-shadow: 0 0 5px #2db74277;
+}
+.whatsApp__btn svg {
+  width: 30px;
+  height: 30px;
+}
+.whatsApp__btn:hover {
+  background: #26a939;
+  color: var(--white);
+  transform: translateY(-4px);
+}
+.whatsApp__contenido {
+  position: fixed;
+  width: fit-content;
+  height: fit-content;
+  bottom: 80px;
+  right: 20px;
+  z-index: 100;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: whatsApp-contenido 0.3s ease forwards;
+}
+@keyframes whatsApp-contenido {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.whatsApp__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 10px;
+  margin-bottom: 10px;
+  background: #26a939;
+  color: var(--white);
+  padding: 10px 20px;
+}
+.whatsApp__top svg {
+  width: 30px;
+  height: 30px;
+}
+.whatsApp__top h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.whatsApp__top p {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+.whatsApp__bottom {
+  padding: 10px 20px;
+}
+.whatsApp__texto {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.9;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+.whatsApp__formulario {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--gray-4);
+  background: var(--white);
+}
+.whatsApp__formulario svg {
+  width: 30px;
+  height: 30px;
+}
+.whatsApp__formulario-whasap {
+  color: #26a939;
+}
+.whatsApp__formulario input {
+  width: 100%;
+  height: 50px;
+  padding: 0 12px;
+  border-radius: 5px;
+  border: 1px solid var(--gray-4);
+  background: var(--light);
+  font-size: 16px;
+  color: var(--secondary);
+}
+.whatsApp__formulario button {
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #26a939;
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s ease all;
+}
+.whatsApp__formulario button:hover {
+  background: #2db742;
+  color: var(--white);
+}
+.whatsApp__formulario button svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
 }
 /*=============== mensage ===============*/
 .mensage {
@@ -283,7 +424,12 @@ select::placeholder {
   border: 1px solid var(--gray-4);
   background: var(--white);
   padding: 10px;
+  transition: 0.3s ease all;
 }
+.producto:hover {
+  border-color: var(--primary);
+}
+
 .producto__info {
   padding: 10px;
 }
@@ -454,22 +600,19 @@ select::placeholder {
   border-radius: 1.3rem;
   font-weight: 600;
   transition: 0.3s ease all;
+  color: var(--white);
 }
 .detalleProducto__compartir--redes a:nth-child(1) {
   background: rgb(59, 89, 152);
-  color: var(--white);
 }
 .detalleProducto__compartir--redes a:nth-child(2) {
-  background: rgb(0, 172, 238);
-  color: var(--white);
+  background: #ea35b1;
 }
 .detalleProducto__compartir--redes a:nth-child(3) {
-  background: rgb(7, 94, 84);
-  color: var(--white);
+  background: rgb(0, 114, 177);
 }
 .detalleProducto__compartir--redes a:nth-child(4) {
-  background: rgb(0, 114, 177);
-  color: var(--white);
+  background: rgb(7, 94, 84);
 }
 .detalleProducto__compartir--redes a:hover {
   transform: translateY(-4px);
@@ -594,6 +737,111 @@ select::placeholder {
     font-size: 40px;
   }
 }
+/*=============== nosotros ===============*/
+.nosotros {
+  padding: 20px;
+}
+.nosotros__contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.nosotros__banner {
+  height: 300px;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.nosotros__info {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.nosotros__titulo {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+.nosotros__descripcion {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray-16);
+  line-height: 1.5;
+}
+/*=============== contacto ===============*/
+.contacto {
+  padding: 20px;
+}
+.contacto__contenido {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+  margin-bottom: 20px;
+}
+.contacto__left {
+  flex: auto;
+}
+.contacto__right {
+  flex: auto;
+}
+.contacto__item {
+  margin-bottom: 20px;
+}
+.contacto__item:last-child {
+  margin-bottom: 0;
+}
+.contacto__item h2 {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--sale);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.contacto__item p,
+.contacto__item a {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray-16);
+  line-height: 1.5;
+}
+.contacto__redes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+.contacto__redes svg {
+  width: 30px;
+  height: 30px;
+}
+.contacto__redes a:nth-child(1) {
+  color: #3b5998;
+}
+.contacto__redes a:nth-child(2) {
+  color: #ea35b1;
+}
+.contacto__redes a:nth-child(3) {
+  color: rgb(0, 172, 238);
+}
+.contacto__redes a:nth-child(4) {
+  color: rgb(7, 94, 84);
+}
+.contacto__contenido iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
 /*=============== footer ===============*/
 .footer {
   background: var(--dark);
@@ -625,6 +873,7 @@ select::placeholder {
   column-gap: 20px;
   row-gap: 20px;
 }
+
 .footer__center ul {
   flex: auto;
   list-style: none;
