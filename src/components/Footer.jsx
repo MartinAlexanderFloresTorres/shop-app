@@ -62,20 +62,20 @@ const Footer = () => {
               <h3>Síguenos</h3>
             </li>
             <li>
-              <a href='https://www.facebook.com/'>
+              <a href={import.meta.env.VITE_FACEBOOK_URL} target='_blank' rel='noreferrer'>
                 <BsFacebook /> Facebook
               </a>
             </li>
             <li>
-              <a href='https://www.twitter.com/'>
-                <BsTwitter />
-                Twitter
+              <a href={import.meta.env.VITE_INSTAGRAM_URL} target='_blank' rel='noreferrer'>
+                <BsInstagram />
+                Instagram
               </a>
             </li>
             <li>
-              <a href='https://www.instagram.com/'>
-                <BsInstagram />
-                Instagram
+              <a href={import.meta.env.VITE_TWITTER_URL} target='_blank' rel='noreferrer'>
+                <BsTwitter />
+                Twitter
               </a>
             </li>
           </ul>

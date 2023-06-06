@@ -2,18 +2,26 @@ import Indicadores from '../components/Indicadores'
 
 const About = () => {
   return (
-    <section className='container nosotros'>
-      <div className='nosotros__contenido'>
-        <img className='nosotros__banner' src='/banner_pirzarras.jpg' alt='' />
+    <section className='nosotros'>
+      <img
+        className='nosotros__banner'
+        src='/banner_pirzarras.jpg'
+        alt='sobre nosotros'
+        width='100%'
+        height='500px'
+        style={{ objectFit: 'cover' }}
+      />
+
+      <div className='container nosotros__contenido'>
         <div className='nosotros__info'>
           <h2 className='nosotros__titulo'>Sobre nosotros</h2>
 
           <p className='nosotros__descripcion'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, molestias! Reprehenderit
-            iusto velit sed voluptate vitae natus corrupti deserunt cupiditate mollitia nostrum quam
-            reiciendis est, laudantium beatae fugiat voluptates vel ducimus nobis quas eveniet
-            suscipit? Blanditiis voluptates exercitationem praesentium amet nostrum eos ex veniam
-            quaerat corrupti, ducimus nulla odit excepturi!
+            Durante más de dos décadas, nuestra compañía se ha especializado en la creación,
+            producción y venta de una amplia variedad de pizarras acrílicas y muebles en melamina y
+            productos relacionados. Nuestro enfoque constante en la innovación y la calidad nos ha
+            permitido obtener reconocimiento tanto en el ámbito educativo como empresarial, tanto en
+            Lima como en otras provincias.
           </p>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { GiCardPickup } from 'react-icons/gi'
 import { BsTicketPerforated } from 'react-icons/bs'
 const Indicadores = () => {
   const style = {
-    color: 'var(--sale)',
+    color: 'var(--primary)',
     width: 50,
     height: 50
   }

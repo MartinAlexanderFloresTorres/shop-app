@@ -1,12 +1,34 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { BiChevronRight } from 'react-icons/bi'
+import { useQuery } from '@tanstack/react-query'
 import Productos from '../components/Productos'
 import Titulo from '../components/Titulo'
-import useProductos from '../hooks/useProductos'
 import EnlaceWhatsApp from '../components/EnlaceWhatsApp'
+import HTMLViewer from '../components/HTMLViewer'
+import productoMapper from '../functions/productoMapper'
+import { OBTENER_PRODUCTO_BY_ID } from '../services/apis/productos'
+import Brochures from '../components/Brochures'
+import ProductoDetalleLoader from '../components/animations/ProductoDetalleLoader'
 
 const Product = () => {
-  const { productos, loading } = useProductos()
+  const { id } = useParams()
+
+  // USE QUERY
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['producto'],
+    queryFn: () => OBTENER_PRODUCTO_BY_ID({ id }),
+    select: ({ data }) => productoMapper(data),
+    retry: 1
+  })
+
+  if (isLoading) return <ProductoDetalleLoader />
+
+  if (isError)
+    return (
+      <div className='container padding'>
+        <p className='error'>Error: {error.response.data.message}</p>
+      </div>
+    )
 
   return (
     <div className='container'>
@@ -14,32 +36,21 @@ const Product = () => {
         <div className='productoDetalle__indicador'>
           <Link to={'/'}>Inicio</Link>
           <BiChevronRight />
-          <Link to={'/'}>Categoria</Link>
+          <Link to={`/categorias/${data.categoria._id}`}>{data.categoria.nombre}</Link>
           <BiChevronRight />
-          <Link to={'/'}>Engrapador mini e-10 10h negro fab 401099</Link>
+          <Link to={`/products/${data._id}`}>{data.titulo}</Link>
         </div>
 
         <div className='productoDetalle__contenedor'>
           <div className='productoDetalle__imagen'>
-            <img src='/producto_1.jpg' alt='name' />
+            <img src={data.imagen.secure_url} alt={data.titulo} />
           </div>
 
           <div className='productoDetalle__detalle'>
             <div className='productoDetalle__info'>
-              <h2>Engrapador mini e-10 10h negro fab 401099</h2>
+              <h2>{data.titulo}</h2>
 
-              <p className='productoDetalle__descripcion'>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam repudiandae
-                perspiciatis accusantium ad ipsa earum ullam unde, quos aspernatur iure! Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Magnam repudiandae perspiciatis
-                accusantium ad ipsa earum ullam unde, quos aspernatur iure! Lorem, ipsum dolor sit
-                amet consectetur adipisicing elit. Magnam repudiandae perspiciatis accusantium ad
-                ipsa earum ullam unde, quos aspernatur iure! Lorem, ipsum dolor sit amet consectetur
-                adipisicing elit. Magnam repudiandae perspiciatis accusantium ad ipsa earum ullam
-                unde, quos aspernatur iure! Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Magnam repudiandae perspiciatis accusantium ad ipsa earum ullam unde, quos
-                aspernatur iure!
-              </p>
+              <p className='productoDetalle__descripcion'>{data.descripcion}</p>
 
               <EnlaceWhatsApp />
             </div>
@@ -53,38 +64,20 @@ const Product = () => {
                 <a href='https://www.whatsapp.com/'>Whatsapp</a>
               </div>
             </div>
+
+            <Brochures />
           </div>
         </div>
 
         <div className='productoDetalle__caracteristicas'>
           <h2 className='productoDetalle__caracteristicas-titulo'>Caracteristicas</h2>
           <div className='productoDetalle__caracteristicas-contenido'>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error dolorem omnis
-              obcaecati quo earum voluptates! Sit, perspiciatis quos! Atque quisquam ducimus eaque
-              autem deserunt itaque ullam quasi distinctio deleniti labore iste, veritatis
-              cupiditate corrupti similique excepturi omnis et dolorum dignissimos obcaecati. Vitae
-              expedita, nulla dolore est impedit vel maiores dolorum suscipit quod? Animi
-              repudiandae ipsum eveniet reiciendis unde architecto totam assumenda? Cum, explicabo
-              distinctio possimus, suscipit necessitatibus unde rerum expedita fugiat nemo soluta
-              quisquam voluptas blanditiis obcaecati dolorem voluptate dignissimos architecto, quas
-              adipisci voluptatem non harum dicta fuga quidem. Reiciendis ex animi ad cumque
-              deleniti sint dignissimos impedit neque aliquid!
-            </p>
-
-            <h2>Caracteristicas</h2>
-            <ul>
-              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-            </ul>
+            <HTMLViewer html={data.caracteristicas} />
           </div>
         </div>
 
         <Titulo>Productos relacionados</Titulo>
-        <Productos productos={productos} loading={loading} />
+        <Productos productos={[]} loading={false} />
       </div>
     </div>
   )

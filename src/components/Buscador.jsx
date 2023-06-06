@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { FiSearch } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 
@@ -16,20 +17,25 @@ const Buscador = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    // VALIDACION
+    if (busqueda.trim() === '') return toast('Ingrese una busqueda', { icon: '🤔' })
+
+    // SOLO NUMEROS, LETRAS Y ESPACIOS
+    const regex = /^[a-zA-Z0-9\s]*$/
+    if (!regex.test(busqueda))
+      return toast('Ingrese solo números, letras y espacios', { icon: '🤔' })
+
     navigate(`/search?q=${busqueda}`)
   }
 
   return (
-    <form className='buscador' onSubmit={handleSubmit}>
-      <input
-        type='text'
-        placeholder='Escriba para hacer una búsqueda'
-        value={busqueda}
-        onChange={handleChange}
-      />
-      <button type='submit'>
+    <form className='header__form' onSubmit={handleSubmit} role='search'>
+      <div className='header__item'>
         <FiSearch />
-      </button>
+        <input type='search' placeholder='Buscar…' value={busqueda} onChange={handleChange} />
+      </div>
+      <button type='submit'>Buscar</button>
     </form>
   )
 }

@@ -10,12 +10,12 @@ const Banner = () => {
           <p className='banner__descripcion'>Ideal para colegios, estudios, oficinas, etc.</p>
 
           <div className='banner__botones'>
-            <Link to={'/products'} className='btn btn--1 banner__boton'>
+            <Link to={'/products'} className='btn banner__boton--1 banner__boton'>
               <BsCardList />
               Ver productos
             </Link>
             <a
-              href='https://web.whatsapp.com/send?phone=999748514'
+              href='https://api.whatsapp.com/send?phone=999748514'
               target='_blank'
               className='btn btn--whatsApp banner__boton'
               rel='noreferrer'

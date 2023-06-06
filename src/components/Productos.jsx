@@ -1,16 +1,20 @@
+import productoMapper from '../functions/productoMapper'
 import Producto from './Producto'
+import ProductosLoaders from './animations/ProductosLoaders'
 
 const Productos = ({ productos = [], loading }) => {
   const isProductosEmpty = productos.length === 0
 
-  if (loading) return <p className='mensage'>Cargando...</p>
+  if (loading) return <ProductosLoaders />
 
   if (isProductosEmpty) return <p className='mensage'>No hay productos</p>
 
+  const mappedProductos = productos.map(productoMapper)
+
   return (
     <div className='productos'>
-      {productos.map((producto) => (
-        <Producto key={producto.id} producto={producto} />
+      {mappedProductos.map((producto) => (
+        <Producto key={producto._id} producto={producto} />
       ))}
     </div>
   )

@@ -1,20 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Buscador from './Buscador'
+import useApp from '../hooks/useApp'
 import Logo from './Logo'
-import { FiMenu, FiSearch, FiX } from 'react-icons/fi'
+import Buscador from './Buscador'
+import { FiMenu, FiSearch, FiX, FiHeart } from 'react-icons/fi'
+import Footer from './Footer'
+import Overflow from './Overflow'
 
 const Header = () => {
+  // ESTADOS
   const [isMovileMenu, setIsMovileMenu] = useState(false)
-  const [isMovileSearch, setIsMovileSearch] = useState(false)
-  const [isScroll, setIsScroll] = useState(false)
+  const [isMovileSearch, setIsMovileSearch] = useState(true)
 
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      setIsScroll(window.scrollY > 200)
-    })
-  }, [])
+  // USE APP
+  const { categorias, favoritos } = useApp()
 
+  // FUNCIONES
   const handleMovileMenu = () => {
     setIsMovileMenu(!isMovileMenu)
   }
@@ -24,84 +25,78 @@ const Header = () => {
   }
 
   return (
-    <>
-      <header className='header'>
-        <div className='header__desktop'>
-          <div className='container'>
-            <div className='header__center'>
-              <Logo />
-              <Buscador />
-            </div>
-          </div>
+    <header className='header'>
+      <section className='header__container container'>
+        <button className='header__menu'>
+          <FiMenu onClick={handleMovileMenu} className='svg' />
+        </button>
 
-          <div className='header__bottom'>
-            <div className='container'>
-              <Link className='header__bottom-item' to='/'>
-                Inicio
-              </Link>
-              <Link className='header__bottom-item' to='/products'>
-                Productos
-              </Link>
-              <Link className='header__bottom-item' to='/contact'>
-                Contacto
-              </Link>
-              <Link className='header__bottom-item' to='/about'>
-                Nosotros
-              </Link>
-            </div>
-          </div>
+        <Logo />
+
+        <nav className='header__navegacion'>
+          <Link to='/products'>Productos</Link>
+          <Link to='/categorias'>Categorias</Link>
+          <Link to='/contact'>Contacto</Link>
+          <Link to='/about'>Nosotros</Link>
+          <Link to='/admin/products'>Admin</Link>
+        </nav>
+
+        {isMovileSearch && <Buscador />}
+
+        <div className='header__iconos'>
+          <button title='Buscar' id='search-btn-toggle' onClick={handleMovileSearch}>
+            <FiSearch />
+          </button>
+
+          <Link to='/favoritos' title='Favoritos'>
+            <FiHeart
+              style={{
+                stroke: 'var(--white)',
+                fill: favoritos.length > 0 ? 'var(--white)' : 'var(--red)'
+              }}
+            />
+          </Link>
         </div>
-      </header>
-
-      <div className={`header__movile ${isScroll ? 'active' : ''}`}>
-        <div className='container'>
-          <div className='header__movile-left'>
-            <button className='btn' onClick={handleMovileMenu}>
-              {isMovileMenu ? <FiX /> : <FiMenu />}
-            </button>
-
-            <Logo />
-          </div>
-
-          <div className='header__movile-right'>
-            <button className='btn' onClick={handleMovileSearch}>
-              <FiSearch />
-            </button>
-          </div>
-        </div>
-
-        {isMovileSearch && (
-          <div className='container buscador__flotante'>
-            <Buscador />
-          </div>
-        )}
 
         {isMovileMenu && (
-          <div className='menu__flotante'>
-            <div className='menu__flotante-top'>
-              <Logo onClick={handleMovileMenu} />
-              <button className='btn' onClick={handleMovileMenu}>
-                <FiX />
-              </button>
+          <Overflow>
+            <div className='subNavegacion'>
+              <div className='subNavegacion__top'>
+                <Logo onClick={handleMovileMenu} />
+                <button onClick={handleMovileMenu}>
+                  <FiX className='svg' />
+                </button>
+              </div>
+              <ul className='subNavegacion__navegacion'>
+                <li>
+                  <Link to='/products'>Productos</Link>
+                </li>
+                <li>
+                  <Link to='/contact'>Contacto</Link>
+                </li>
+                <li>
+                  <Link to='/about'>Nosotros</Link>
+                </li>
+                <li>
+                  <Link to='/admin/products'>Admin</Link>
+                </li>
+
+                {categorias &&
+                  categorias.map((categoria) => (
+                    <li key={categoria._id}>
+                      <Link to={`/categorias/${categoria._id}`} onClick={handleMovileMenu}>
+                        {categoria.nombre}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+
+              <Footer />
             </div>
-            <div className='menu__flotante-container'>
-              <Link className='menu__flotante-item' to='/' onClick={handleMovileMenu}>
-                Inicio
-              </Link>
-              <Link className='menu__flotante-item' to='/products' onClick={handleMovileMenu}>
-                Productos
-              </Link>
-              <Link className='menu__flotante-item' to='/contact' onClick={handleMovileMenu}>
-                Contacto
-              </Link>
-              <Link className='menu__flotante-item' to='/about' onClick={handleMovileMenu}>
-                Nosotros
-              </Link>
-            </div>
-          </div>
+          </Overflow>
         )}
-      </div>
-    </>
+      </section>
+    </header>
   )
 }
 

@@ -7,7 +7,13 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <div
+        style={{
+          minHeight: 'calc(100vh - 440px)'
+        }}
+      >
+        <Outlet />
+      </div>
       <Footer />
       <WhatsApp />
     </>

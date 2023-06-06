@@ -1,7 +1,7 @@
 const EnlaceWhatsApp = () => {
   return (
     <a
-      href='https://web.whatsapp.com/send?phone=999748514&text=Hola!%20Quiero%20cotizar%20un%20producto%20%F0%9F%98%85'
+      href='https://api.whatsapp.com/send?phone=999748514&text=Hola!%20Quiero%20cotizar%20un%20producto%20%F0%9F%98%85'
       target='_blank'
       className='productoDetalle__whatsApp'
       rel='noreferrer'
