@@ -5,6 +5,7 @@ import { OBTENER_CATEGORIAS, OBTENER_CATEGORIAS_PRODUCTOS } from '../services/ap
 import { OBTENER_PRODUCTOS } from '../services/apis/productos'
 import { OBTENER_BROCHURES } from '../services/apis/brochure'
 import useObtenerFavoritos from '../hooks/useObtenerFavoritos'
+import generarTituloPage from '../helpers/generarTituloPage'
 
 export const AppContext = createContext({
   categorias: [],
@@ -62,6 +63,8 @@ const AppProvider = ({ children }) => {
 
   // SCROLL TO TOP EN CADA CAMBIO DE RUTA
   useEffect(() => {
+    document.querySelector('html head title').textContent =
+      generarTituloPage({ pathname }) || 'Joes Peru SAC '
     window.scrollTo(0, 0)
   }, [pathname])
 
