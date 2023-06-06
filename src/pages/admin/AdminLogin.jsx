@@ -26,7 +26,7 @@ const AdminLogin = () => {
       })
     },
     onError: (error) => {
-      toast(error.response.data.message, {
+      toast(error?.response?.data?.message, {
         icon: '🚫'
       })
     }

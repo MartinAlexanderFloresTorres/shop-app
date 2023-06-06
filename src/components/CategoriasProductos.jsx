@@ -16,6 +16,16 @@ const CategoriasProductos = () => {
       </>
     )
 
+  if (!categoriasProductos) {
+    return (
+      <div className='container padding'>
+        <p className='error'>
+          Error al cargar las categorias y productos, por favor intentelo más tarde
+        </p>
+      </div>
+    )
+  }
+
   if (categoriasProductos.length === 0) {
     return (
       <div className='container padding'>

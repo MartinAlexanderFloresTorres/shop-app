@@ -36,7 +36,7 @@ const Categoria = () => {
   if (isError)
     return (
       <div className='container padding'>
-        <p className='error'>Error: {error.response.data.message}</p>
+        <p className='error'>Error: {error?.response?.data?.message}</p>
       </div>
     )
 

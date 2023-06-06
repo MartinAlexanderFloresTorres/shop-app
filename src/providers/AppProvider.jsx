@@ -29,28 +29,32 @@ const AppProvider = ({ children }) => {
   const { data: categorias, isLoading: isLoadingCategorias } = useQuery({
     queryKey: ['categorias'],
     queryFn: OBTENER_CATEGORIAS,
-    select: ({ data }) => data
+    select: ({ data }) => data,
+    retry: 1
   })
 
   // OBTENER PRODUCTOS
   const { data: productos, isLoading: isLoadingProductos } = useQuery({
     queryKey: ['productos'],
     queryFn: OBTENER_PRODUCTOS,
-    select: ({ data }) => data
+    select: ({ data }) => data,
+    retry: 1
   })
 
   // USE QUERY
   const { data: brochures, isLoading: isLoadingBrochures } = useQuery({
     queryKey: ['brochures'],
     queryFn: OBTENER_BROCHURES,
-    select: ({ data }) => data
+    select: ({ data }) => data,
+    retry: 1
   })
 
   // USE QUERY CATEGORIAS PRODUCTOS
   const { data: categoriasProductos, isLoading: isLoadingCategoriasProductos } = useQuery({
     queryKey: ['categoriasProductos'],
     queryFn: OBTENER_CATEGORIAS_PRODUCTOS,
-    select: ({ data }) => data
+    select: ({ data }) => data,
+    retry: 1
   })
 
   // USE OBTENER FAVORITOS

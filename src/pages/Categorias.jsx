@@ -55,22 +55,27 @@ const Categorias = () => {
 
       <div className='container padding'>
         <Titulo>Categorias</Titulo>
-        <CategoriasList />
+        {categoriasProductos ? (
+          <>
+            <CategoriasList categorias={categoriasProductos} />
+            {categoriasProductos.map(({ categoria, productos }) => (
+              <div key={categoria._id} className='mb-20'>
+                <div className='produtos__encabezado'>
+                  <h2>
+                    {categoria.nombre} ({productos.length})
+                  </h2>
 
-        {categoriasProductos.map(({ categoria, productos }) => (
-          <div key={categoria._id} className='mb-20'>
-            <div className='produtos__encabezado'>
-              <h2>
-                {categoria.nombre} ({productos.length})
-              </h2>
-
-              <Link to={`/categorias/${categoria._id}`} className='btn btn-primary'>
-                Ver más
-              </Link>
-            </div>
-            <Productos productos={productos.slice(0, 12)} loading={false} />
-          </div>
-        ))}
+                  <Link to={`/categorias/${categoria._id}`} className='btn btn-primary'>
+                    Ver más
+                  </Link>
+                </div>
+                <Productos productos={productos.slice(0, 12)} loading={false} />
+              </div>
+            ))}
+          </>
+        ) : (
+          <h2 className='mensage'>No hay categorias</h2>
+        )}
       </div>
     </>
   )

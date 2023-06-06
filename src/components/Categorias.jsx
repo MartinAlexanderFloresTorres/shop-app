@@ -8,6 +8,8 @@ const Categorias = () => {
 
   if (isLoadingCategorias) return <CategoriasLoaders />
 
+  if (!categorias) return null
+
   const categoriasMap = categorias.map(categoriaMapper)
 
   if (categoriasMap.length === 0) {
