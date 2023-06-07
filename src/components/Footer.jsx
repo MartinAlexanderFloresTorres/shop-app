@@ -42,7 +42,7 @@ const Footer = () => {
             <li>
               <p className='footer__flex'>
                 <strong>Email:</strong>
-                <a href='mailto:correo@gmail.com'>correo@gmail.com</a>
+                <a href='mailto:joessperu@hotmail.com'>joessperu@hotmail.com</a>
               </p>
             </li>
             <li>

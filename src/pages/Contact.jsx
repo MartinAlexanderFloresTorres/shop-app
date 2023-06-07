@@ -49,7 +49,7 @@ const Contact = () => {
             </div>
             <div className='contacto__item'>
               <h2>CORREO ELETRÓNICO</h2>
-              <a href='mailto:correo@gmail.com'>correo@gmail.com</a>
+              <a href='mailto:joessperu@hotmail.com'>joessperu@hotmail.com</a>
             </div>
 
             <div className='contacto__item'>
