@@ -21,7 +21,7 @@ const WhatsApp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    sendWhatsApp({ phone: '999748514', message: mensaje != '' ? mensaje : DEFAULT_MESSAGE })
+    sendWhatsApp({ phone: '+51999748514', message: mensaje != '' ? mensaje : DEFAULT_MESSAGE })
     setMensaje('')
   }
 

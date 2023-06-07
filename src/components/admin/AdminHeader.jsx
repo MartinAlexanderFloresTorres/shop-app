@@ -67,19 +67,29 @@ const AdminHeader = () => {
               </div>
               <ul className='subNavegacion__navegacion'>
                 <li>
-                  <Link to='/admin/products'>Mis Productos</Link>
+                  <Link to='/admin/products' onClick={handleMovileMenu}>
+                    Mis Productos
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/admin/categorias'>Mis Categorias</Link>
+                  <Link to='/admin/categorias' onClick={handleMovileMenu}>
+                    Mis Categorias
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/admin/products/new'>Nuevo Producto</Link>
+                  <Link to='/admin/products/new' onClick={handleMovileMenu}>
+                    Nuevo Producto
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/admin/categorias/new'>Nueva Categoria</Link>
+                  <Link to='/admin/categorias/new' onClick={handleMovileMenu}>
+                    Nueva Categoria
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/admin/brochure'>Brochure</Link>
+                  <Link to='/admin/brochure' onClick={handleMovileMenu}>
+                    Brochure
+                  </Link>
                 </li>
               </ul>
             </div>

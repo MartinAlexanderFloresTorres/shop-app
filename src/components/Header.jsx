@@ -68,13 +68,19 @@ const Header = () => {
               </div>
               <ul className='subNavegacion__navegacion'>
                 <li>
-                  <Link to='/products'>Productos</Link>
+                  <Link to='/products' onClick={handleMovileMenu}>
+                    Productos
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/contact'>Contacto</Link>
+                  <Link to='/contact' onClick={handleMovileMenu}>
+                    Contacto
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/about'>Nosotros</Link>
+                  <Link to='/about' onClick={handleMovileMenu}>
+                    Nosotros
+                  </Link>
                 </li>
 
                 {categorias &&
