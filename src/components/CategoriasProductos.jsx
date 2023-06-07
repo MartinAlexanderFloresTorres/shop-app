@@ -63,9 +63,7 @@ const CategoriasProductos = () => {
           }}
         >
           <div className='container'>
-            <h2>
-              {categoria.nombre} ({productos.length})
-            </h2>
+            <h2>{categoria.nombre}</h2>
             <p className='mb-20'>{categoria.descripcion}</p>
 
             <Link to={`/categorias/${categoria._id}`} className='btn btn--white btn--max300'>
