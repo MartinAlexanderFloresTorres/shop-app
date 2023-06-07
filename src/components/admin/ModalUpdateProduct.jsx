@@ -55,7 +55,9 @@ const ModalUpdateProduct = ({ producto, callback }) => {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/jpeg': [],
-      'image/png': []
+      'image/png': [],
+      'image/jpg': [],
+      'image/webp': []
     },
     maxFiles: 1
   })
