@@ -1389,6 +1389,8 @@ select::placeholder {
   color: var(--gray-16);
   font-size: 16px;
   margin-bottom: 20px;
+  white-space: pre-line;
+  line-height: 1.4;
 }
 .productoDetalle__whatsApp {
   width: fit-content;
