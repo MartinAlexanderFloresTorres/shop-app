@@ -1513,6 +1513,7 @@ select::placeholder {
 .productoDetalle__caracteristicas-contenido {
   padding: 20px;
   color: var(--secondary);
+  line-height: 2;
 }
 .productoDetalle__caracteristicas-contenido ul {
   padding-left: 20px;
