@@ -1515,11 +1515,9 @@ select::placeholder {
   color: var(--secondary);
   line-height: 2;
 }
-.productoDetalle__caracteristicas-contenido ul {
+.productoDetalle__caracteristicas-contenido ul,
+.productoDetalle__caracteristicas-contenido ol {
   padding-left: 20px;
-}
-.productoDetalle__caracteristicas-contenido ul li {
-  margin-bottom: 10px;
 }
 .productoDetalle__caracteristicas-contenido a {
   color: var(--cyan);
