@@ -31,7 +31,7 @@ const Search = () => {
     <div className='container padding'>
       <Titulo>Busqueda {search.get('q')}</Titulo>
 
-      {data && <Productos productos={data.data} loading={isLoading} />}
+      {<Productos productos={data?.data} loading={isLoading} />}
     </div>
   )
 }
