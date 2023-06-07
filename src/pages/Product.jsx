@@ -1,34 +1,41 @@
 import { Link, useParams } from 'react-router-dom'
 import { BiChevronRight } from 'react-icons/bi'
-import { useQuery } from '@tanstack/react-query'
-import Productos from '../components/Productos'
-import Titulo from '../components/Titulo'
+import { useMutation } from '@tanstack/react-query'
 import EnlaceWhatsApp from '../components/EnlaceWhatsApp'
 import HTMLViewer from '../components/HTMLViewer'
 import productoMapper from '../functions/productoMapper'
-import { OBTENER_PRODUCTO_BY_ID } from '../services/apis/productos'
 import Brochures from '../components/Brochures'
 import ProductoDetalleLoader from '../components/animations/ProductoDetalleLoader'
+import { OBTENER_PRODUCTO_BY_ID } from '../services/apis/productos'
+import ProductosRelacionados from '../components/ProductosRelacionados'
+import { useEffect } from 'react'
 
 const Product = () => {
   const { id } = useParams()
-
-  // USE QUERY
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ['producto'],
-    queryFn: () => OBTENER_PRODUCTO_BY_ID({ id }),
-    select: ({ data }) => productoMapper(data),
+  // USE MUTATION
+  const { mutate, data, isLoading, isError, error } = useMutation({
+    mutationKey: ['producto'],
+    mutationFn: () => OBTENER_PRODUCTO_BY_ID({ id }),
     retry: 1
   })
 
+  useEffect(() => {
+    mutate()
+  }, [id, mutate])
+
   if (isLoading) return <ProductoDetalleLoader />
 
-  if (isError)
+  if (isError) {
     return (
       <div className='container padding'>
         <p className='error'>Error: {error?.response?.data?.message}</p>
       </div>
     )
+  }
+
+  if (!data) return null
+
+  const producto = productoMapper(data.data)
 
   return (
     <div className='container'>
@@ -36,21 +43,21 @@ const Product = () => {
         <div className='productoDetalle__indicador'>
           <Link to={'/'}>Inicio</Link>
           <BiChevronRight />
-          <Link to={`/categorias/${data.categoria._id}`}>{data.categoria.nombre}</Link>
+          <Link to={`/categorias/${producto.categoria._id}`}>{producto.categoria.nombre}</Link>
           <BiChevronRight />
-          <Link to={`/products/${data._id}`}>{data.titulo}</Link>
+          <Link to={`/products/${producto._id}`}>{producto.titulo}</Link>
         </div>
 
         <div className='productoDetalle__contenedor'>
           <div className='productoDetalle__imagen'>
-            <img src={data.imagen.secure_url} alt={data.titulo} />
+            <img src={producto.imagen.secure_url} alt={producto.titulo} />
           </div>
 
           <div className='productoDetalle__detalle'>
             <div className='productoDetalle__info'>
-              <h2>{data.titulo}</h2>
+              <h2>{producto.titulo}</h2>
 
-              <p className='productoDetalle__descripcion'>{data.descripcion}</p>
+              <p className='productoDetalle__descripcion'>{producto.descripcion}</p>
 
               <EnlaceWhatsApp />
             </div>
@@ -58,10 +65,25 @@ const Product = () => {
             <div className='detalleProducto__compartir'>
               <h2>Comparte con tus amigos</h2>
               <div className='detalleProducto__compartir--redes'>
-                <a href='https://www.facebook.com/'>Facebook</a>
-                <a href='https://www.instagram.com/'>Instagram</a>
-                <a href='https://www.twitter.com/'>Twitter</a>
-                <a href='https://www.whatsapp.com/'>Whatsapp</a>
+                <a href={import.meta.env.VITE_FACEBOOK_URL} target='_blank' rel='noreferrer'>
+                  Facebook
+                </a>
+                <a href={import.meta.env.VITE_INSTAGRAM_URL} target='_blank' rel='noreferrer'>
+                  Instagram
+                </a>
+                <a href={import.meta.env.VITE_TWITTER_URL} target='_blank' rel='noreferrer'>
+                  Twitter
+                </a>
+                <a
+                  href={
+                    import.meta.env.VITE_WHATSAPP_URL +
+                    ` te comparto este producto: ${producto.titulo} ${window.location.href}`
+                  }
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Whatsapp
+                </a>
               </div>
             </div>
 
@@ -72,12 +94,11 @@ const Product = () => {
         <div className='productoDetalle__caracteristicas'>
           <h2 className='productoDetalle__caracteristicas-titulo'>Caracteristicas</h2>
           <div className='productoDetalle__caracteristicas-contenido'>
-            <HTMLViewer html={data.caracteristicas} />
+            <HTMLViewer html={producto.caracteristicas} />
           </div>
         </div>
 
-        <Titulo>Productos relacionados</Titulo>
-        <Productos productos={[]} loading={false} />
+        <ProductosRelacionados categoriaId={producto.categoria._id} productoId={producto._id} />
       </div>
     </div>
   )

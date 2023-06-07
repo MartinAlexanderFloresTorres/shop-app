@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import Logo from './Logo'
 import { BsFacebook, BsTwitter, BsInstagram } from 'react-icons/bs'
+import Logo from './Logo'
 
 const Footer = () => {
   return (
@@ -19,7 +19,7 @@ const Footer = () => {
               <Link to='/'>Inicio</Link>
             </li>
             <li>
-              <Link to='/productos'>Productos</Link>
+              <Link to='/products'>Productos</Link>
             </li>
             <li>
               <Link to='/contact'>Contacto</Link>

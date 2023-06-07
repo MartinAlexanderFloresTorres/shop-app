@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FiMenu, FiSearch, FiX, FiHeart } from 'react-icons/fi'
 import useApp from '../hooks/useApp'
 import Logo from './Logo'
 import Buscador from './Buscador'
-import { FiMenu, FiSearch, FiX, FiHeart } from 'react-icons/fi'
 import Footer from './Footer'
 import Overflow from './Overflow'
 
@@ -38,7 +38,6 @@ const Header = () => {
           <Link to='/categorias'>Categorias</Link>
           <Link to='/contact'>Contacto</Link>
           <Link to='/about'>Nosotros</Link>
-          <Link to='/admin/products'>Admin</Link>
         </nav>
 
         {isMovileSearch && <Buscador />}
@@ -76,9 +75,6 @@ const Header = () => {
                 </li>
                 <li>
                   <Link to='/about'>Nosotros</Link>
-                </li>
-                <li>
-                  <Link to='/admin/products'>Admin</Link>
                 </li>
 
                 {categorias &&

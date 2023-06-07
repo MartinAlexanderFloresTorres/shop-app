@@ -65,3 +65,9 @@ export const ELIMINAR_PRODUCTO = async ({ id }) => {
 export const BUSCAR_PRODUCTOS = async ({ query }) => {
   return await clienteAxios.get(`/productos/search/querys?query=${query}`)
 }
+
+export const PRODUCTOS_RELACIONADOS = async ({ categoriaId, productoId }) => {
+  return await clienteAxios.get(
+    `/productos/productos/relacionados?categoriaId=${categoriaId}&productoId=${productoId}&limit=12`
+  )
+}

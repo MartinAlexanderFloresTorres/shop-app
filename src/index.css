@@ -1363,14 +1363,14 @@ select::placeholder {
 }
 .productoDetalle__imagen {
   width: 100%;
-  max-width: 500px;
-  object-fit: contain;
-  margin-right: 20px;
+  max-width: 400px;
   margin: 0 auto;
 }
 .productoDetalle__imagen img {
   width: 100%;
   height: 100%;
+  max-width: 400px;
+  max-height: 400px;
   object-fit: contain;
 }
 .productoDetalle__detalle {
